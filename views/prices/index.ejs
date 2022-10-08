@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %> 
+
+<h1>Prices</h1>
+
+<% for(let price of prices) {%> 
+    
+        <ul>
+            <li>Date: <%= price.date %> </li>
+            <li>Market: <%= price.marketName %> </li>
+            <li>Minimum Price: <%= price.minimumPrice %> </li>
+            <li>Maximum Price: <%= price.maximumPrice %> </li>
+            <li>Average Price: <%= price.averagePrice %> </li>
+        </ul>
+    <% } %> 
