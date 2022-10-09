@@ -14,6 +14,7 @@ const User = require('./models/user')
 const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
+const cocoonRoutes = require('./routes/cocoons')
 
 mongoose.connect('mongodb://localhost:27017/seri-easy')
 
@@ -68,6 +69,7 @@ app.get('/', (req, res) => {
 app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)
+app.use('/cocoons', cocoonRoutes)
 
 app.listen(8000, () => {
   console.log('listening on port 8000')
