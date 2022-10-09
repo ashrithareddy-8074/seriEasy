@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>Having produce to sell</h1>
+
+<div>
+<form action="/cocoons" method="POST">
+    <label for="expectedDate">Expected date of delivery</label>
+    <input type="date" id="expectedDate" name="expectedDate"><br>
+    <label for="expectedQuantity">Expected quantity for delivery</label>
+    <input type="number" id="expectedQunatity" name="expectedQuantity"><br>
+    <label for="location">Location</label>
+    <input type="text" id="location" name="location"><br>
+    <label for="contact">Contact</label>
+    <input type="text" id="contact" name="contact"><br>
+    <button>Submit</button>
+</form>
+</div>
