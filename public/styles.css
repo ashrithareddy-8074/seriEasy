@@ -1,4 +1,142 @@
-/* .navbar  .sticky-top .navbar-expand-lg.navbar-custom
+.quote
 {
-    background-color: rgb(95, 32, 32);
-} */
+    height: 35vh;
+    background-color:#e9d5ff;
+    overflow: hidden;
+}
+.head3
+{
+    padding-top:4rem;
+    padding-left: 2rem;
+    font-family: 'Playfair Display', serif;
+}
+.head2
+{
+    font-family: 'Lato', sans-serif;
+    padding-left: 3rem;
+    padding-top:1rem;
+}
+.head4
+{
+    margin-left:32px;
+    padding-top:2rem;
+    font-family: 'Playfair Display', serif;
+}
+.head5
+{
+    color: #6b21a8;
+}
+.head6
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:1rem;
+}
+.head7
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: inline;
+}
+.image1
+{
+    margin-top:1rem;
+    margin-bottom: 1rem;
+}
+.eggsInfo
+{
+    background-color: #F3E9FF;
+}
+.ruling
+{
+    
+    color:#7E7B80;
+    margin-left: 32px;
+    margin-right:2rem;
+}
+.eggsContent
+{
+    height:15vh;
+    border:1px solid #7E7B80;
+    padding:1rem;
+    margin: 1rem 1rem; 
+}
+.eggsText
+{
+    padding:1rem;
+    margin: 0;
+    
+}
+.eggsLink
+{
+    text-decoration: none;
+    color:#6b21a8;
+}
+.eggsTextBottom
+{
+    padding-top:0;
+}
+.priceContent
+{
+    background-color:#e9d5ff;
+    height: 50vh;
+    color: black;
+}
+  @media screen and (max-width:767px)
+  {
+    .priceContent{
+        height: 62vh;
+    }
+  }
+.pricesText
+{
+    color: black;
+}
+.pricesLink
+{
+    color:#6b21a8;
+    text-decoration: none;
+}
+.priceInnerContent
+{
+    border: 1px solid #7E7B80;
+    height: 20vh;
+    margin: 1rem 2rem;
+}
+.priceInnerLeft
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sellersContent
+{
+    background-color: #F3E9FF;
+}
+.sellerInnerContent
+{
+    margin: 1rem;
+}
+.cocoonsLink
+{
+    text-decoration: none;
+    color: #6b21a8;
+}
+.cocoonsText
+{
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 0;
+}
+.contactLink
+{
+    text-decoration: none;
+    color: #6b21a8;
+}
+.buyersInfo
+{
+    background-color:#e9d5ff;
+}
+.buyersInnerContent
+{
+    margin: 1rem;
+}
