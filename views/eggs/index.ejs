@@ -8,6 +8,8 @@
   <li>Date: <%= egg.date %></li>
   <li>Location: <%= egg.location %></li>
   <li>Quantity: <%= egg.quantity %></li>
-  <li>Contact<%= egg.contact %></li>
+  <li>Contact:  <%= egg.contact %></li>
+  <li><a href="/eggs/<%= egg._id %>">View </a></li>
+  <li><a href="/eggs/<%= egg._id %>/edit">Edit</a></li>
 </ul>
 <% } %>

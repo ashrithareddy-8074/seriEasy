@@ -18,9 +18,38 @@ router.post('/', async (req, res) => {
   res.redirect('/')
 })
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
+  const egg = await Egg.findById(id)
+  if (!egg) {
+    req.flash('error', 'cannot find details!!')
+    return res.redirect('/eggs')
+  }
+  res.render('eggs/show', { egg })
+})
+
 router.get('/:id/edit', async (req, res) => {
   const { id } = req.params
   const egg = await Egg.findById(id)
+  if (!egg) {
+    req.flash('error', 'cannot find details!!')
+    return res.redirect('/eggs')
+  }
+  res.render('eggs/edit', { egg })
+})
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params
+  const egg = await Egg.findByIdAndUpdate(id, { ...req.body.egg })
+  req.flash('success', 'successfully updated details')
+  res.redirect(`/eggs/${egg._id}`)
+})
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params
+  await Egg.findByIdAndDelete(id)
+  res.redirect('/eggs')
+  req.flash('success', 'successfully delted')
 })
 
 module.exports = router
