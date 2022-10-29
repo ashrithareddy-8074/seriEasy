@@ -32,7 +32,6 @@ router.post(
   }),
   (req, res) => {
     req.flash('success', 'welcome back!!')
-    console.log('reached here')
     res.redirect('/')
   }
 )

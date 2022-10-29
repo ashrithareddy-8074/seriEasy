@@ -15,6 +15,7 @@ const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
+const groupRoutes = require('./routes/groups')
 
 mongoose.connect('mongodb://localhost:27017/seri-easy')
 
@@ -65,10 +66,7 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
-app.get('/groups', (req, res) => {
-  res.render('group');
-})
-
+app.use('/groups', groupRoutes)
 app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)

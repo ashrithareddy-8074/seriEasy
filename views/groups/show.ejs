@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+
+<% for(let chat of group.chats) { %>
+    <ul>
+        <h6><%= chat.author.username %> </h6>
+        <li>
+            <%= chat.body %> 
+        </li>
+    </ul>
+    <% } %>  
+
+<form action="/groups/<%= group._id %>/chats" method="POST">
+    <label for="body">New message:</label>
+    <input type="text" id="body" name="chat[body]">
+    <button>Submit</button>
+</form>
