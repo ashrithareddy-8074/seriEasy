@@ -1,3 +1,19 @@
 <% layout('layouts/boilerplate') %> 
 
 <h1>edit form</h1>
+
+<div>
+    <form action="/prices/<%= price._id %>?_method=PUT" method="POST">
+        <label for="averagePrice">Average Price: </label>
+        <input type="number" value="<%= price.averagePrice %>" name="averagePrice" id="averagePrice" min="0"><br>
+        <label for="minimumPrice">Minimum Price: </label>
+        <input type="number" value="<%= price.minimumPrice %>" name="minimumPrice" id="minimumPrice" min="0"><br>
+        <label for="maximumPrice">Maximum Price: </label>
+        <input type="number" value="<%= price.maximumPrice %>" name="maximumPrice" id="maximumPrice" min="0"><br>
+        <label for="marketName">Market Name: </label>
+        <input type="text" value="<%= price.marketName %>" id="marketName" name="marketName"><br>
+        <label for="date">Date: </label>
+        <input type="date" value="" id="date" name="date"><br>
+        <button>Submit</button>
+    </form>
+</div>

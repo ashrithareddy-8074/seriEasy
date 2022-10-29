@@ -13,6 +13,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
   const egg = new Egg(req.body)
+  egg.owner = req.user._id;
   await egg.save()
   req.flash('success', 'successfully added')
   res.redirect('/')
@@ -40,7 +41,7 @@ router.get('/:id/edit', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   const { id } = req.params
-  const egg = await Egg.findByIdAndUpdate(id, { ...req.body.egg })
+  const egg = await Egg.findByIdAndUpdate(id, { ...req.body })
   req.flash('success', 'successfully updated details')
   res.redirect(`/eggs/${egg._id}`)
 })
@@ -48,8 +49,8 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
   await Egg.findByIdAndDelete(id)
-  res.redirect('/eggs')
   req.flash('success', 'successfully delted')
+  res.redirect('/eggs')
 })
 
 module.exports = router
