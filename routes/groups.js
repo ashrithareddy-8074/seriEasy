@@ -40,19 +40,13 @@ router.get('/:id', async (req, res) => {
 
 router.post('/:id/chats', async (req, res) => {
   const { id } = req.params
-  console.log(id)
   const group = await Group.findById(id)
-  console.log('this' + req.params)
   const chat = new Chat(req.body.chat)
   chat.author = req.user._id
-  console.log(chat)
-  console.log(group)
-  console.log(group.chats)
   group.chats.push(chat)
   console.log(chat)
   await group.save()
   await chat.save()
-  console.log('saved')
   res.redirect(`/groups/${group._id}`)
 })
 
