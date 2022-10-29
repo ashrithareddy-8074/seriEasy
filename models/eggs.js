@@ -15,7 +15,7 @@ const eggSchema = new Schema({
   contact: {
     type: Number
   },
-  owner:{
+  owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

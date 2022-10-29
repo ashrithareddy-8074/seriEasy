@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %> 
+
+<a href="/groups/new">Add a new group</a>
+
+<% for(let group of groups)  {%> 
+    <ul>
+        <li>
+            Title: <%= group.title %> 
+        </li>
+        <li>
+            <a href="/groups/<%= group._id %>">Enter</a>
+        </li>
+    </ul>
+    <% } %> 
