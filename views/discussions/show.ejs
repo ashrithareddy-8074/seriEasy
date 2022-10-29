@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+<h3>
+<%= discussion.title %> 
+</h3>
+<p>
+    <%= discussion.body %> 
+    <hr>
+    ----by <%= discussion.author.username %> 
+</p>
+
+<% for(let reply of discussion.replies) {%>
+    <ul>
+        <li>
+    <h6><%= reply.author.username %> </h6>
+    <p><%= reply.body %> </p>
+</li></ul>
+    <% } %>  
+
+<form action="/discussions/<%= discussion._id %>/replies" method="POST">
+    <label for="body">New reply:</label>
+    <input type="text" id="body" name="reply[body]">
+    <button>Submit</button>
+</form>

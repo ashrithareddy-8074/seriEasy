@@ -19,7 +19,6 @@ router.post('/', async (req, res) => {
   res.redirect('/')
 })
 
-
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   const cocoon = await Cocoon.findById(id)
