@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %> 
+
+<ul>
+    <li>Date: <%= egg.date %></li>
+    <li>Location: <%= egg.location %></li>
+    <li>Quantity: <%= egg.quantity %></li>
+    <li>Contact<%= egg.contact %></li>
+    <li><a href="/eggs/<%= egg.id %>/edit">Edit</a></li>
+  </ul>
+  <form action="/eggs/<%= egg._id %>?_method=DELETE" method="POST">
+    <button >Delete</button></form>

@@ -18,4 +18,31 @@ router.post('/', async (req, res) => {
   res.redirect('/')
 })
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
+  const price = await Price.findById(id)
+  if (!price) {
+    req.flash('error', 'cannot find details')
+    return res.redirect('/prices')
+  }
+  res.render('prices/show', { price })
+})
+
+router.get('/:id/edit', async (req, res) => {
+  const { id } = req.params
+  const price = await Price.findById(id)
+  if (!price) {
+    req.flash('error', 'cannot find details')
+    return res.redirect('/prices')
+  }
+  res.render('prices/edit', { price })
+})
+
+router.put('/:id', async(req, res) =>{
+  const {id} = req.params;
+  const price = await Price.findByIdAndUpdate(id, {...req.body})
+  req.flash('success', 'successfully updated details');
+  res.redirect(`/prices/${price._id}`);
+})
+
 module.exports = router

@@ -1,5 +1,6 @@
 <% layout('layouts/boilerplate') %> 
 
+<a href="/prices/new">New</a>
 <h1>Prices</h1>
 
 <% for(let price of prices) {%> 
@@ -10,5 +11,7 @@
             <li>Minimum Price: <%= price.minimumPrice %> </li>
             <li>Maximum Price: <%= price.maximumPrice %> </li>
             <li>Average Price: <%= price.averagePrice %> </li>
+            <li><a href="/prices/<%= price._id %> ">View</a></li>
+            <li><a href="/prices/<%= price._id %>/edit">Edit</a></li>
         </ul>
     <% } %> 

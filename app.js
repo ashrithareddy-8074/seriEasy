@@ -65,6 +65,10 @@ app.get('/', (req, res) => {
   res.render('home')
 })
 
+app.get('/groups', (req, res) => {
+  res.render('group');
+})
+
 app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)

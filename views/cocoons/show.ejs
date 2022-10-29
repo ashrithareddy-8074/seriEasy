@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+
+<ul>
+    <li>Date: <%= cocoon.expectedDate %></li>
+    <li>Location: <%= cocoon.location %></li>
+    <li>Quantity: <%= cocoon.expectedQuantity %></li>
+    <li>Contact<%= cocoon.contact %></li>
+    <li><a href="/cocoons/<%= cocoon._id %>/edit">Edit</a></li>
+    <form action="/cocoons/<%= cocoon._id %>?_method=DELETE" method="POST">
+        <button >Delete</button></form>
+  </ul>
