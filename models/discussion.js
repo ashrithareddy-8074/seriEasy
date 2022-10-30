@@ -16,6 +16,7 @@ const discussionSchema = new Schema({
   bodyDownvote: {
     type: Number
   },
+
   replies: [
     {
       type: Schema.Types.ObjectId,
