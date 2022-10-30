@@ -11,6 +11,9 @@ const replySchema = new Schema({
   replyDownvote: {
     type: Number
   },
+  replyNumber: {
+    type: Number
+  },
   comments: {
     type: Schema.Types.ObjectId,
     ref: 'Comment'

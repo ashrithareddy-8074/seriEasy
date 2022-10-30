@@ -13,6 +13,14 @@
         <li>
     <h6><%= reply.author.username %> </h6>
     <p><%= reply.body %> </p>
+    <strong id="reply" data-note="reply<%= reply.replyNumber %>">Reply</strong>
+    <div id="reply<%= reply.replyNumber %>" style="display:none;">
+        <form action="">
+            <label for="body">Body:</label>
+            <input type="text" id="body" name="comment[body]">
+            <button>Submit</button>
+        </form>
+    </div>
 </li></ul>
     <% } %>  
 

@@ -25,15 +25,19 @@ router.get('/:id', async (req, res) => {
   const discussion = await Discussion.findById(id)
     .populate({
       path: 'replies',
-      populate: {
-        path: 'author'
-      }
+      populate: [
+        {
+          path: 'author'
+        },
+        {
+          path: 'comments'
+        }
+      ]
       //   populate: {
       //     path: 'comments'
       //   }
     })
     .populate('author')
-  console.log(discussion)
   if (!discussion) {
     req.flash('error', 'cannot find details')
     return res.redirect('/discussions')
@@ -47,7 +51,7 @@ router.post('/:id/replies', async (req, res) => {
   const reply = new Reply(req.body.reply)
   reply.author = req.user._id
   discussion.replies.push(reply)
-  console.log(discussion)
+  reply.replyNumber = discussion.replies.length
   await discussion.save()
   await reply.save()
   res.redirect(`/discussions/${discussion._id}`)

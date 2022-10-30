@@ -30,7 +30,6 @@ router.get('/:id', async (req, res) => {
       }
     })
     .populate('owner')
-  console.log(group)
   if (!group) {
     req.flash('error', 'cannot find details of group')
     return res.redirect('/groups')
@@ -44,7 +43,6 @@ router.post('/:id/chats', async (req, res) => {
   const chat = new Chat(req.body.chat)
   chat.author = req.user._id
   group.chats.push(chat)
-  console.log(chat)
   await group.save()
   await chat.save()
   res.redirect(`/groups/${group._id}`)
