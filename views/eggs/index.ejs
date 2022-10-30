@@ -11,5 +11,6 @@
   <li>Contact:  <%= egg.contact %></li>
   <li><a href="/eggs/<%= egg._id %>">View </a></li>
   <li><a href="/eggs/<%= egg._id %>/edit">Edit</a></li>
+  <li><a href="https://api.whatsapp.com/send?phone=91<%= egg.contact  %>">Contact the owner through whatsapp</a></li>
 </ul>
 <% } %>
