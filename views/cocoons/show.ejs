@@ -5,6 +5,7 @@
     <li>Location: <%= cocoon.location %></li>
     <li>Quantity: <%= cocoon.expectedQuantity %></li>
     <li>Contact<%= cocoon.contact %></li>
+    <li><a href="https://api.whatsapp.com/send?phone=91<%= cocoon.contact  %>">Contact the owner through whatsapp</a></li>
     <li><a href="/cocoons/<%= cocoon._id %>/edit">Edit</a></li>
     <form action="/cocoons/<%= cocoon._id %>?_method=DELETE" method="POST">
         <button >Delete</button></form>
