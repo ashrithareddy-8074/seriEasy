@@ -1,7 +1,6 @@
 <% layout('layouts/boilerplate') %>
 
 <h3>Edit form </h3>
-<h4><%= cocoon._id %> is not there </h4>
 <div>
     <form action="/cocoons/<%= cocoon._id %>?_method=PUT" method="POST">
         <label for="expectedDate">Expected date of delivery</label>
