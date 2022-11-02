@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const Discussion = require('../models/discussion');
-const Reply = require('../models/replies');
-const Comment = require('../models/comments');
+const Discussion = require('../models/discussion')
+const Reply = require('../models/replies')
+const Comment = require('../models/comments')
 
 router.get('/', async (req, res) => {
   const discussions = await Discussion.find({})
@@ -59,19 +59,16 @@ router.post('/:id/replies', async (req, res) => {
 })
 
 router.post('/:id/replies/:idr/comments', async (req, res) => {
-  const {id, idr} = req.params;
-  const discussion = await Discussion.findById(id);
-  const reply = await Reply.findById(idr);
-  const comment = new Comment(req.body.comment);
-  comment.author = req.user._id;
-  console.log(reply);
-  console.log(comment);
-  reply.comments.push(comment);
-  console.log(reply)
-  await discussion.save();
-  await reply.save();
-  await comment.save();
-  res.redirect(`/discussions/${discussion._id}`);
+  const { id, idr } = req.params
+  const discussion = await Discussion.findById(id)
+  const reply = await Reply.findById(idr)
+  const comment = new Comment(req.body.comment)
+  comment.author = req.user._id
+  reply.comments.push(comment)
+  await discussion.save()
+  await reply.save()
+  await comment.save()
+  res.redirect(`/discussions/${discussion._id}`)
 })
 
 module.exports = router

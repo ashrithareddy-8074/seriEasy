@@ -1,0 +1,57 @@
+2022/11/02-17:36:21.569 8a03 Reusing MANIFEST /Users/ashritha/Documents/projects/seriEasy/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/11/02-17:36:21.571 8a03 Recovering log #4842
+2022/11/02-17:36:21.620 8a03 Reusing old log /Users/ashritha/Documents/projects/seriEasy/.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/004842.log 
+2022/11/02-17:36:34.257 8a03 Level-0 table #4886: started
+2022/11/02-17:36:34.324 8a03 Level-0 table #4886: 1269850 bytes OK
+2022/11/02-17:36:34.360 8a03 Delete type=0 #4842
+2022/11/02-17:36:35.149 6b03 Compacting 1@0 + 0@1 files
+2022/11/02-17:36:35.193 6b03 Generated table #4887@0: 17080 keys, 425031 bytes
+2022/11/02-17:36:35.248 6b03 Generated table #4888@0: 168 keys, 18493 bytes
+2022/11/02-17:36:35.285 6b03 Generated table #4889@0: 365 keys, 16146 bytes
+2022/11/02-17:36:35.304 6b03 Generated table #4890@0: 206 keys, 3642 bytes
+2022/11/02-17:36:35.304 6b03 Compacted 1@0 + 0@1 files => 463312 bytes
+2022/11/02-17:36:35.340 6b03 compacted to: files[ 0 4 53 0 0 0 0 ]
+2022/11/02-17:36:35.340 6b03 Delete type=2 #4886
+2022/11/02-17:36:35.858 6b03 Compacting 1@1 + 6@2 files
+2022/11/02-17:36:35.918 6b03 Generated table #4891@1: 29743 keys, 2262973 bytes
+2022/11/02-17:36:35.973 6b03 Generated table #4892@1: 25564 keys, 2294202 bytes
+2022/11/02-17:36:36.029 6b03 Generated table #4893@1: 24585 keys, 2283217 bytes
+2022/11/02-17:36:36.089 6b03 Generated table #4894@1: 43667 keys, 2272728 bytes
+2022/11/02-17:36:36.153 6b03 Generated table #4895@1: 72283 keys, 2367057 bytes
+2022/11/02-17:36:36.200 6b03 Generated table #4896@1: 24089 keys, 2194754 bytes
+2022/11/02-17:36:36.219 6b03 Generated table #4897@1: 161 keys, 185001 bytes
+2022/11/02-17:36:36.219 6b03 Compacted 1@1 + 6@2 files => 13859932 bytes
+2022/11/02-17:36:36.255 6b03 compacted to: files[ 0 3 54 0 0 0 0 ]
+2022/11/02-17:36:36.260 b503 Compacting 1@1 + 9@2 files
+2022/11/02-17:36:36.291 b503 Generated table #4898@1: 3082 keys, 2156165 bytes
+2022/11/02-17:36:36.325 b503 Generated table #4899@1: 3996 keys, 2162333 bytes
+2022/11/02-17:36:36.375 b503 Generated table #4900@1: 3172 keys, 2159034 bytes
+2022/11/02-17:36:36.411 b503 Generated table #4901@1: 4427 keys, 2161810 bytes
+2022/11/02-17:36:36.449 b503 Generated table #4902@1: 8394 keys, 2169990 bytes
+2022/11/02-17:36:36.507 b503 Generated table #4903@1: 37888 keys, 2220792 bytes
+2022/11/02-17:36:36.565 b503 Generated table #4904@1: 23666 keys, 2284560 bytes
+2022/11/02-17:36:36.623 b503 Generated table #4905@1: 25793 keys, 2271694 bytes
+2022/11/02-17:36:36.682 b503 Generated table #4906@1: 24534 keys, 2276115 bytes
+2022/11/02-17:36:36.701 b503 Generated table #4907@1: 277 keys, 22217 bytes
+2022/11/02-17:36:36.701 b503 Compacted 1@1 + 9@2 files => 19884710 bytes
+2022/11/02-17:36:36.737 b503 compacted to: files[ 0 2 55 0 0 0 0 ]
+2022/11/02-17:36:36.737 b503 Delete type=2 #4850
+2022/11/02-17:36:36.738 b503 Delete type=2 #4887
+2022/11/02-17:36:36.738 b503 Delete type=2 #4851
+2022/11/02-17:36:36.738 b503 Delete type=2 #4853
+2022/11/02-17:36:36.738 b503 Delete type=2 #4852
+2022/11/02-17:36:36.738 b503 Delete type=2 #4848
+2022/11/02-17:36:36.738 b503 Delete type=2 #4849
+2022/11/02-17:36:36.841 f407 Compacting 1@1 + 10@2 files
+2022/11/02-17:36:36.917 f407 Generated table #4908@1: 25201 keys, 2265529 bytes
+2022/11/02-17:36:36.990 f407 Generated table #4909@1: 28635 keys, 2207730 bytes
+2022/11/02-17:36:37.049 f407 Generated table #4910@1: 22827 keys, 2324071 bytes
+2022/11/02-17:36:37.086 f407 Generated table #4911@1: 9839 keys, 2131365 bytes
+2022/11/02-17:36:37.126 f407 Generated table #4912@1: 12044 keys, 2138070 bytes
+2022/11/02-17:36:37.165 f407 Generated table #4913@1: 9905 keys, 2133175 bytes
+2022/11/02-17:36:37.202 f407 Generated table #4914@1: 6597 keys, 2128687 bytes
+2022/11/02-17:36:37.268 f407 Generated table #4915@1: 84417 keys, 2229099 bytes
+2022/11/02-17:36:37.353 f407 Generated table #4916@1: 105907 keys, 2257169 bytes
+2022/11/02-17:36:37.409 f407 Generated table #4917@1: 59612 keys, 1304355 bytes
+2022/11/02-17:36:37.409 f407 Compacted 1@1 + 10@2 files => 21119250 bytes
+2022/11/02-17:36:37.463 f407 compacted to: files[ 0 1 55 0 0 0 0 ]

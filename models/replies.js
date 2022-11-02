@@ -14,10 +14,12 @@ const replySchema = new Schema({
   replyNumber: {
     type: Number
   },
-  comments:[ {
-    type: Schema.Types.ObjectId,
-    ref: 'Comment'
-  }],
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
