@@ -5,10 +5,8 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const { Client } = require('whatsapp-web.js')
-// const { LegacySessionAuth } = require('whatsapp-web.js');
-const { LocalAuth } = require('whatsapp-web.js')
+// const { LocalAuth } = require('whatsapp-web.js')
 const qrcode = require('qrcode-terminal')
-// const fs = require('fs');
 
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -58,8 +56,8 @@ db.once('open', () => {
   console.log('database connected')
 })
 
-const msg = '916301816868@c.us'
-const msg1 = '916301816868@c.us'
+const msg = '918074725017@c.us'
+const msg1 = '918074725017@c.us'
 
 const eggSave = async () => {
   count = 0
@@ -84,9 +82,11 @@ const priceSave = async () => {
   await price.save()
 }
 
-const client = new Client({
-  authStrategy: new LocalAuth()
-})
+const client = new Client(
+//   {
+//   authStrategy: new LocalAuth()
+// }
+)
 
 client.on('qr', (qr) => {
   qrcode.generate(qr, { small: true })
