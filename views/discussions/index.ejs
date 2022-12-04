@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+
+<a href="/discussions/new">Add new post</a>
+
+<% for(let discussion of discussions) { %> 
+   <ul>
+    <h6><%= discussion.title %> </h6>
+    <li><%= discussion.body %> </li>
+    <li><a href="/discussions/<%= discussion._id %>">View</a></li>
+   </ul> 
+<% } %> 
