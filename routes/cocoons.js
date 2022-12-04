@@ -13,11 +13,14 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
   const cocoon = new Cocoon(req.body)
+
   cocoon.owner = req.user._id
+
   await cocoon.save()
   req.flash('success', 'succesfully added')
   res.redirect('/')
 })
+
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params
