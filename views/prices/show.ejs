@@ -1,0 +1,13 @@
+<% layout('layouts/boilerplate') %> 
+<ul>
+    <li>Date: <%= price.date %> </li>
+    <li>Market: <%= price.marketName %> </li>
+    <li>Minimum Price: <%= price.minimumPrice %> </li>
+    <li>Maximum Price: <%= price.maximumPrice %> </li>
+    <li>Average Price: <%= price.averagePrice %> </li>
+    <li><a href="/prices/<%= price._id %>/edit">Edit</a></li>
+      <div>
+        <canvas id="myChart"></canvas>
+        helllo
+      </div>
+</ul>

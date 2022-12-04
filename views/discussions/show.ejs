@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+<h3>
+<%= discussion.title %> 
+</h3>
+<p>
+    <%= discussion.body %> 
+    <hr>
+    ----by <%= discussion.author.username %> 
+</p>
+
+<% for(let reply of discussion.replies) {%>
+    <ul>
+        <li>
+    <h6><%= reply.author.username %> </h6>
+    <p><%= reply.body %> </p>
+    <div>
+        <% for (comment of reply.comments ) {%> 
+           <ul>
+            <li><%= comment.body %> </li>
+           </ul> 
+            <% } %> 
+    </div>
+    <strong id="reply" data-note="reply<%= reply.replyNumber %>">Comment</strong>
+    <div id="reply<%= reply.replyNumber %>" style="display:none;">
+        <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/comments" method="POST">
+            <label for="body">Body:</label>
+            <input type="text" id="body" name="comment[body]">
+            <button>Submit</button>
+        </form>
+    </div>
+</li></ul>
+    <% } %>  
+
+<form action="/discussions/<%= discussion._id %>/replies" method="POST">
+    <label for="body">New reply:</label>
+    <input type="text" id="body" name="reply[body]">
+    <button>Submit</button>
+</form>

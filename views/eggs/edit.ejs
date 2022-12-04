@@ -5,13 +5,13 @@
 <div>
   <form action="/eggs/<%= egg._id %>?_method=PUT" method="POST">
     <label for="date">Hatch Date:</label>
-    <input type="date" id="date" name="date" /><br />
+    <input type="date" value="" id="date" name="date" /><br />
     <label for="quantity">Quantity Available(in dfls):</label>
-    <input type="number" id="quantity" name="quantity" min="0" /><br />
+    <input type="number" value="<%= egg.quantity %>" id="quantity" name="quantity" min="0" /><br />
     <label for="location">Location:</label>
-    <input type="text" id="location" name="location" /><br />
+    <input type="text" value="<%= egg.location %> " id="location" name="location" /><br />
     <label for="contact">Contact:</label>
-    <input type="text" id="contact" name="contact" /><br />
+    <input type="text" value="<%= egg.contact %> " id="contact" name="contact" /><br />
     <button>Submit</button>
   </form>
 </div>
