@@ -37,10 +37,6 @@ const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 //  'mongodb://localhost:27017/yelp-camp';
 // process.env.DB_URL
 
-const dbUrl = 'mongodb://localhost:27017/yelp-camp';
-//  'mongodb://localhost:27017/yelp-camp';
-// process.env.DB_URL
-
 
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
@@ -282,16 +278,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(mongoSanitize())
-
-const store = new MongoDBStore({
-  url: dbUrl,
-  secret: 'thisshouldbeabettersecret',
-  touchAfter: 24 * 60 * 60
-});
-
-store.on("error", function (e) {
-  console.log("SESSION STORE ERROR", e)
-})
 
 const store = new MongoDBStore({
   url: dbUrl,
