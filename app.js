@@ -21,10 +21,6 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize')
-const Egg = require('./models/eggs')
-const Price = require('./models/prices')
-
 
 const mongoSanitize = require('express-mongo-sanitize')
 const Egg = require('./models/eggs')
@@ -37,6 +33,9 @@ const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
+const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+//  'mongodb://localhost:27017/yelp-camp';
+// process.env.DB_URL
 
 const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 //  'mongodb://localhost:27017/yelp-camp';
@@ -45,36 +44,10 @@ const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
+
+const MongoDBStore = require("connect-mongo")(session);
 const cocoonSellRoutes = require('./routes/cocoonSell')
 
-const dateOb = new Date()
-const date = ('0' + dateOb.getDate()).slice(-2)
-const month = ('0' + (dateOb.getMonth() + 1)).slice(-2)
-const year = dateOb.getFullYear()
-const hours = dateOb.getHours()
-const minutes = dateOb.getMinutes()
-const seconds = dateOb.getSeconds()
-
-let eggDate
-let eggLocation
-let eggQuantity
-let eggContact
-let priceMin
-let priceMax
-let priceAvg
-let priceMarket
-let priceDate
-let msgCount = 0
-let msg1Count = 0
-let count = 0
-let count1 = 0
-
-console.log(date, month, year, hours, minutes, seconds)
-
-
-const groupRoutes = require('./routes/groups')
-const discussionRoutes = require('./routes/discussions')
-const MongoDBStore = require("connect-mongo")(session);
 
 const dateOb = new Date()
 const date = ('0' + dateOb.getDate()).slice(-2)
@@ -99,6 +72,7 @@ let count = 0
 let count1 = 0
 
 console.log(date, month, year, hours, minutes, seconds)
+
 
 mongoose.connect(dbUrl);
 
@@ -309,6 +283,15 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(mongoSanitize())
 
+const store = new MongoDBStore({
+  url: dbUrl,
+  secret: 'thisshouldbeabettersecret',
+  touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR", e)
+})
 
 const store = new MongoDBStore({
   url: dbUrl,
@@ -351,6 +334,7 @@ const scriptSrcUrls = [
 const styleSrcUrls = [
   "https://kit-free.fontawesome.com/",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css",
+  "https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjxAwXjeu.woff2",
   "https://stackpath.bootstrapcdn.com/",
   "https://api.mapbox.com/",
   "https://api.tiles.mapbox.com/",
