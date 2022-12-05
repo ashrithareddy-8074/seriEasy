@@ -46,36 +46,9 @@ const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
 const cocoonSellRoutes = require('./routes/cocoonSell')
-
-const dateOb = new Date()
-const date = ('0' + dateOb.getDate()).slice(-2)
-const month = ('0' + (dateOb.getMonth() + 1)).slice(-2)
-const year = dateOb.getFullYear()
-const hours = dateOb.getHours()
-const minutes = dateOb.getMinutes()
-const seconds = dateOb.getSeconds()
-
-let eggDate
-let eggLocation
-let eggQuantity
-let eggContact
-let priceMin
-let priceMax
-let priceAvg
-let priceMarket
-let priceDate
-let msgCount = 0
-let msg1Count = 0
-let count = 0
-let count1 = 0
-
-console.log(date, month, year, hours, minutes, seconds)
-
-
-const groupRoutes = require('./routes/groups')
-const discussionRoutes = require('./routes/discussions')
 const MongoDBStore = require("connect-mongo")(session);
 
+
 const dateOb = new Date()
 const date = ('0' + dateOb.getDate()).slice(-2)
 const month = ('0' + (dateOb.getMonth() + 1)).slice(-2)
@@ -99,6 +72,7 @@ let count = 0
 let count1 = 0
 
 console.log(date, month, year, hours, minutes, seconds)
+
 
 mongoose.connect(dbUrl);
 
