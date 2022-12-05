@@ -6,7 +6,7 @@ const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const { Client } = require('whatsapp-web.js')
 // const { LocalAuth } = require('whatsapp-web.js')
-const qrcode = require('qrcode-terminal')
+// const qrcode = require('qrcode-terminal')
 
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -15,6 +15,8 @@ const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const Egg = require('./models/eggs')
 const Price = require('./models/prices')
+const Cocoon = require('./models/cocoons')
+const CocoonSell = require('./models/cocoonSell')
 
 const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
@@ -22,6 +24,7 @@ const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
+const cocoonSellRoutes = require('./routes/cocoonSell')
 
 const dateOb = new Date()
 const date = ('0' + dateOb.getDate()).slice(-2)
@@ -82,14 +85,13 @@ const priceSave = async () => {
   await price.save()
 }
 
-const client = new Client(
+const client = new Client()
 //   {
 //   authStrategy: new LocalAuth()
 // }
-)
 
 client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true })
+  // qrcode.generate(qr, { small: true })
 })
 
 client.on('ready', () => {
@@ -283,8 +285,13 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.render('home')
+app.get('/', async (req, res) => {
+  const prices = await Price.find()
+  const sellers = await Cocoon.find().populate('owner')
+  const eggs = await Egg.find()
+  const cocoonSellers = await CocoonSell.find()
+  console.log(sellers)
+  res.render('home', { prices, sellers, eggs, cocoonSellers })
 })
 
 app.use('/discussions', discussionRoutes)
@@ -293,6 +300,7 @@ app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)
 app.use('/cocoons', cocoonRoutes)
+app.use('/cocoonSell', cocoonSellRoutes)
 
 app.listen(8000, () => {
   console.log('listening on port 8000')
