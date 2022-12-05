@@ -12,8 +12,7 @@ const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const { Client } = require('whatsapp-web.js')
 // const { LocalAuth } = require('whatsapp-web.js')
-const qrcode = require('qrcode-terminal')
-
+// const qrcode = require('qrcode-terminal')
 
 const session = require('express-session')
 const flash = require('connect-flash')
