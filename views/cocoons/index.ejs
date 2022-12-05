@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>Cocoons available</h1>
+
+
+<a href="/cocoons/new">Add new</a>
+
+<% for(let cocoon of cocoons) {%>
+
+    <ul>
+      <li>Date: <%= cocoon.expectedDate %></li>
+      <li>Location: <%= cocoon.location %></li>
+      <li>Quantity: <%= cocoon.expectedQuantity %></li>
+      <li>Contact<%= cocoon.contact %></li>
+
+      <li><a href="/cocoons/<%= cocoon._id %>">View</a></li>
+
+    </ul>
+    <% } %>

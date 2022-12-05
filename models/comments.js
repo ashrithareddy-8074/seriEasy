@@ -1,24 +1,21 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const eggSchema = new Schema({
-  date: {
-    type: Date
-  },
-  quantity: {
-    type: Number
-  },
-  location: {
+const commentSchema = new Schema({
+  body: {
     type: String,
     required: true
   },
-  contact: {
+  commentUpvote: {
     type: Number
   },
-  owner: {
+  commentDownvote: {
+    type: Number
+  },
+  author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }
 })
 
-module.exports = mongoose.model('Egg', eggSchema)
+module.exports = mongoose.model('Comment', commentSchema)

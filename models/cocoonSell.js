@@ -1,19 +1,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const eggSchema = new Schema({
-  date: {
-    type: Date
-  },
-  quantity: {
-    type: Number
+const cocoonSellSchema = new Schema({
+  name: {
+    type: String,
+    required: true
   },
   location: {
     type: String,
     required: true
   },
   contact: {
-    type: Number
+    type: Number,
+    required: true
   },
   owner: {
     type: Schema.Types.ObjectId,
@@ -21,4 +20,4 @@ const eggSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Egg', eggSchema)
+module.exports = mongoose.model('CocoonSell', cocoonSellSchema)

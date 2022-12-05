@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-
+<a href="/eggs/new/">New</a>
 <h1>Eggs availability</h1>
 
 <% for(let egg of eggs) {%>
@@ -8,6 +8,9 @@
   <li>Date: <%= egg.date %></li>
   <li>Location: <%= egg.location %></li>
   <li>Quantity: <%= egg.quantity %></li>
-  <li>Contact<%= egg.contact %></li>
+  <li>Contact:  <%= egg.contact %></li>
+  <li><a href="/eggs/<%= egg._id %>">View </a></li>
+  <li><a href="/eggs/<%= egg._id %>/edit">Edit</a></li>
+  <li><a href="https://api.whatsapp.com/send?phone=91<%= egg.contact  %>">Contact the owner through whatsapp</a></li>
 </ul>
 <% } %>

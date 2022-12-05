@@ -14,6 +14,7 @@ const { Client } = require('whatsapp-web.js')
 // const { LocalAuth } = require('whatsapp-web.js')
 const qrcode = require('qrcode-terminal')
 
+
 const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
@@ -25,13 +26,51 @@ const Egg = require('./models/eggs')
 const Price = require('./models/prices')
 
 
+const mongoSanitize = require('express-mongo-sanitize')
+const Egg = require('./models/eggs')
+const Price = require('./models/prices')
+const Cocoon = require('./models/cocoons')
+const CocoonSell = require('./models/cocoonSell')
+
+
 const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
+
 const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 //  'mongodb://localhost:27017/yelp-camp';
 // process.env.DB_URL
+
+
+const groupRoutes = require('./routes/groups')
+const discussionRoutes = require('./routes/discussions')
+const cocoonSellRoutes = require('./routes/cocoonSell')
+
+const dateOb = new Date()
+const date = ('0' + dateOb.getDate()).slice(-2)
+const month = ('0' + (dateOb.getMonth() + 1)).slice(-2)
+const year = dateOb.getFullYear()
+const hours = dateOb.getHours()
+const minutes = dateOb.getMinutes()
+const seconds = dateOb.getSeconds()
+
+let eggDate
+let eggLocation
+let eggQuantity
+let eggContact
+let priceMin
+let priceMax
+let priceAvg
+let priceMarket
+let priceDate
+let msgCount = 0
+let msg1Count = 0
+let count = 0
+let count1 = 0
+
+console.log(date, month, year, hours, minutes, seconds)
+
 
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
@@ -96,14 +135,14 @@ const priceSave = async () => {
   await price.save()
 }
 
-const client = new Client(
+
+const client = new Client()
 //   {
 //   authStrategy: new LocalAuth()
 // }
-)
 
 client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true })
+  // qrcode.generate(qr, { small: true })
 })
 
 client.on('ready', () => {
@@ -270,6 +309,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(mongoSanitize())
 
+
 const store = new MongoDBStore({
   url: dbUrl,
   secret: 'thisshouldbeabettersecret',
@@ -282,11 +322,13 @@ store.on("error", function (e) {
 
 const sessionConfig = {
   store,
+  name:'session',
   secret: 'thisshouldbeabettersecret',
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure:true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
@@ -358,8 +400,13 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.render('home')
+app.get('/', async (req, res) => {
+  const prices = await Price.find()
+  const sellers = await Cocoon.find().populate('owner')
+  const eggs = await Egg.find()
+  const cocoonSellers = await CocoonSell.find()
+  console.log(sellers)
+  res.render('home', { prices, sellers, eggs, cocoonSellers })
 })
 
 app.use('/discussions', discussionRoutes)
@@ -368,6 +415,7 @@ app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)
 app.use('/cocoons', cocoonRoutes)
+app.use('/cocoonSell', cocoonSellRoutes)
 
 app.listen(8000, () => {
   console.log('listening on port 8000')
