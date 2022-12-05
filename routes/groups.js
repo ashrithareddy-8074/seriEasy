@@ -29,7 +29,10 @@ router.get('/:id', async (req, res) => {
         path: 'author'
       }
     })
-    .populate('owner')
+    .populate({
+      path: 'owner'
+    })
+  console.log(group)
   if (!group) {
     req.flash('error', 'cannot find details of group')
     return res.redirect('/groups')

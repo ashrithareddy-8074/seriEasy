@@ -19,16 +19,34 @@
     <div class="col-md-4 col-lg-4 col-sm-6">
       <div class="eggsContent">
   <h5>Location:</h5>
+  <p>
+    <% for(let egg of eggs) {%> 
+      <%= egg.location %> 
+      <% break %> 
+    <% } %> 
+  </p>
 </div>
     </div>
     <div class="col-md-4 col-sm-6">
       <div class="eggsContent">
   <h5>Date:</h5>
+  <p>
+    <% for(let egg of eggs) {%> 
+      <%= egg.date %> 
+      <% break %> 
+    <% } %> 
+  </p>
 </div>
     </div>
     <div class="col-md-4 col-lg-4 col-sm-6">
       <div class="eggsContent">
   <h5>Quantity:</h5>
+  <p>
+    <% for(let egg of eggs) {%> 
+      <%= egg.quantity %> 
+      <% break %> 
+    <% } %> 
+  </p>
 </div>
     </div>
   </div>
@@ -50,14 +68,14 @@
       <div class="carousel-item active card">
         <div class="card-img-overlay">
           <h5 class="head6">
-           Hyderabad market price dated 20th August, 2022
+           <%= prices[0].marketName %> price on <%= prices[0].date %> 
           </h5>
           <div class="row">
             <div class="col-md-6 ">
               <div class="priceInnerContent priceInnerLeft">
-               <div> <h5 class="head7">Average Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Maximum Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Minimum Price:</h5><span>250</span></div>
+               <div> <h5 class="head7">Average Price:</h5><span><%= prices[0].averagePrice %></span></div>
+                <div><h5 class="head7">Maximum Price:</h5><span><%= prices[0].maximumPrice %></span></div>
+                <div><h5 class="head7">Minimum Price:</h5><span><%= prices[0].minimumPrice %></span></div>
                 <div><h5 class="head7">Number of lots:</h5><span>5</span></div>
             </div>
             </div>
@@ -71,21 +89,21 @@
         <div class="priceContent"></div>
         
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="head5">Hyderabad Market</h5>
+          <h5 class="head5"><%= prices[0].marketName %> </h5>
           <p class="pricesText">For detailed analysis, <a href="/prices" class="pricesLink">Click here</a></p>
         </div>
       </div>
       <div class="carousel-item card">
         <div class="card-img-overlay">
           <h5 class="head6">
-            Jangoan market price dated 20th August, 2022
+            <%= prices[1].marketName %> price dated 20th August, 2022
            </h5>
           <div class="row">
             <div class="col-md-6 ">
               <div class="priceInnerContent priceInnerLeft">
-                <div> <h5 class="head7">Average Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Maximum Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Minimum Price:</h5><span>250</span></div>
+                <div> <h5 class="head7">Average Price:</h5><span><%= prices[1].averagePrice %></span></div>
+                <div><h5 class="head7">Maximum Price:</h5><span><%= prices[1].averagePrice %></span></div>
+                <div><h5 class="head7">Minimum Price:</h5><span><%= prices[1].averagePrice %></span></div>
                 <div><h5 class="head7">Number of lots:</h5><span>5</span></div>
             </div>
             </div>
@@ -99,21 +117,21 @@
         <div class="priceContent">
         </div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="head5">Jangoan Market</h5>
+          <h5 class="head5"><%= prices[1].marketName %></h5>
           <p class="pricesText">For detailed analysis, <a href="/prices" class="pricesLink">Click here</a></p>
         </div>
       </div>
       <div class="carousel-item card">
         <div class="card-img-overlay">
           <h5 class="head6">
-            Ramanagaram market price dated 20th August, 2022
+            <%= prices[2].marketName %> price dated 20th August, 2022
            </h5>
            <div class="row">
             <div class="col-md-6">
               <div class="priceInnerContent priceInnerLeft">
-                <div> <h5 class="head7">Average Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Maximum Price:</h5><span>250</span></div>
-                <div><h5 class="head7">Minimum Price:</h5><span>250</span></div>
+                <div> <h5 class="head7">Average Price:</h5><span><%= prices[2].averagePrice %></span></div>
+                <div><h5 class="head7">Maximum Price:</h5><span><%= prices[2].maximumPrice %></span></div>
+                <div><h5 class="head7">Minimum Price:</h5><span><%= prices[2].minimumPrice %></span></div>
                 <div><h5 class="head7">Number of lots:</h5><span>5</span></div>
             </div>
             </div>
@@ -126,7 +144,7 @@
         </div>
         <div class="priceContent"></div>
         <div class="carousel-caption d-none d-md-block">
-          <h5 class="head5">Ramanagaram Market</h5>
+          <h5 class="head5"><%= prices[2].marketName %></h5>
           <p class="pricesText">For detailed analysis, <a href="/prices" class="pricesLink">Click here</a></p>
         </div>
       </div>
@@ -149,12 +167,12 @@
 <div class="card" style="width: 18rem;">
   <img src="cocoons.jpeg" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Ram Gopal</h5>
+    <h5 class="card-title"><%= sellers[0].owner.username %> </h5>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Approximate Date: 23 October, 2022</li>
-    <li class="list-group-item">Approximate Qunatity: 200</li>
-    <li class="list-group-item">Location: Siddipet</li>
+    <li class="list-group-item">Approximate Date: <%= sellers[0].expectedDate %> </li>
+    <li class="list-group-item">Approximate Qunatity: <%=  sellers[0].expectedQuantity %></li>
+    <li class="list-group-item">Location:  <%=  sellers[0].location %></li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link contactLink">Contact</a>
@@ -167,12 +185,12 @@
   <div class="card" style="width: 18rem;">
     <img src="cocoons.jpeg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Sridhar Reddy</h5>
+      <h5 class="card-title"><%= sellers[1].owner.username %></h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Approximate Date: 23 October, 2022</li>
-      <li class="list-group-item">Approximate Qunatity: 800</li>
-      <li class="list-group-item">Location: Siddipet</li>
+      <li class="list-group-item">Approximate Date: <%= sellers[1].expectedDate %> </li>
+      <li class="list-group-item">Approximate Qunatity:<%=  sellers[1].expectedQuantity %></li>
+      <li class="list-group-item">Location:  <%=  sellers[1].location %></li>
     </ul>
     <div class="card-body">
       <a href="#" class="card-link contactLink">Contact</a>
@@ -185,12 +203,12 @@
     <div class="card" style="width: 18rem;">
       <img src="cocoons.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Krishna</h5>
+        <h5 class="card-title"><%= sellers[2].owner.username %></h5>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Approximate Date: 23 October, 2022</li>
-        <li class="list-group-item">Approximate Qunatity: 500</li>
-        <li class="list-group-item">Location: Siddipet</li>
+        <li class="list-group-item">Approximate Date:  <%= sellers[2].expectedDate %></li>
+        <li class="list-group-item">Approximate Qunatity:<%=  sellers[2].expectedQuantity %></li>
+        <li class="list-group-item">Location:<%=  sellers[2].location %></li>
       </ul>
       <div class="card-body">
         <a href="#" class="card-link contactLink">Contact</a>

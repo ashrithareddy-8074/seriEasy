@@ -14,15 +14,19 @@ const { Client } = require('whatsapp-web.js')
 // const { LocalAuth } = require('whatsapp-web.js')
 const qrcode = require('qrcode-terminal')
 
+
 const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const helmet = require('helmet');
+
 const mongoSanitize = require('express-mongo-sanitize')
 const Egg = require('./models/eggs')
 const Price = require('./models/prices')
+const Cocoon = require('./models/cocoons')
+const CocoonSell = require('./models/cocoonSell')
 
 
 const eggRoutes = require('./routes/eggs')
@@ -33,9 +37,17 @@ const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 //  'mongodb://localhost:27017/yelp-camp';
 // process.env.DB_URL
 
+const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+//  'mongodb://localhost:27017/yelp-camp';
+// process.env.DB_URL
+
+
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
+
 const MongoDBStore = require("connect-mongo")(session);
+const cocoonSellRoutes = require('./routes/cocoonSell')
+
 
 const dateOb = new Date()
 const date = ('0' + dateOb.getDate()).slice(-2)
@@ -60,6 +72,7 @@ let count = 0
 let count1 = 0
 
 console.log(date, month, year, hours, minutes, seconds)
+
 
 mongoose.connect(dbUrl);
 
@@ -96,14 +109,14 @@ const priceSave = async () => {
   await price.save()
 }
 
-const client = new Client(
+
+const client = new Client()
 //   {
 //   authStrategy: new LocalAuth()
 // }
-)
 
 client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true })
+  // qrcode.generate(qr, { small: true })
 })
 
 client.on('ready', () => {
@@ -280,13 +293,25 @@ store.on("error", function (e) {
   console.log("SESSION STORE ERROR", e)
 })
 
+const store = new MongoDBStore({
+  url: dbUrl,
+  secret: 'thisshouldbeabettersecret',
+  touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+  console.log("SESSION STORE ERROR", e)
+})
+
 const sessionConfig = {
   store,
+  name:'session',
   secret: 'thisshouldbeabettersecret',
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure:true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
@@ -359,8 +384,13 @@ app.use((req, res, next) => {
   next()
 })
 
-app.get('/', (req, res) => {
-  res.render('home')
+app.get('/', async (req, res) => {
+  const prices = await Price.find()
+  const sellers = await Cocoon.find().populate('owner')
+  const eggs = await Egg.find()
+  const cocoonSellers = await CocoonSell.find()
+  console.log(sellers)
+  res.render('home', { prices, sellers, eggs, cocoonSellers })
 })
 
 app.use('/discussions', discussionRoutes)
@@ -369,6 +399,7 @@ app.use('/eggs', eggRoutes)
 app.use('/', userRoutes)
 app.use('/prices', priceRoutes)
 app.use('/cocoons', cocoonRoutes)
+app.use('/cocoonSell', cocoonSellRoutes)
 
 app.listen(8000, () => {
   console.log('listening on port 8000')
