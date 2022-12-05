@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+
+<h3>Buyers Available</h3>
+
+<a href="/cocoonSell/new">New</a>
+
+<% for(let buyer of buyers) {%> 
+    <ul>
+        <li>Name: <%= buyer.name %> </li>
+        <li>Location: <%= buyer.location %> </li>
+        <li>Contact: <%= buyer.contact %> </li>
+        <li><a href="/cocoonSell/<%= buyer._id %>">View</a></li>
+    </ul>
+<% } %> 
