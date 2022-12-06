@@ -1,8 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
 }
-
-
 
 const express = require('express')
 const app = express()
@@ -19,7 +17,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
-const helmet = require('helmet');
+const helmet = require('helmet')
 
 const mongoSanitize = require('express-mongo-sanitize')
 const Egg = require('./models/eggs')
@@ -27,23 +25,18 @@ const Price = require('./models/prices')
 const Cocoon = require('./models/cocoons')
 const CocoonSell = require('./models/cocoonSell')
 
-
 const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
-const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = 'mongodb://localhost:27017/seri-easy'
 //  'mongodb://localhost:27017/yelp-camp';
 // process.env.DB_URL
-
 
 const groupRoutes = require('./routes/groups')
 const discussionRoutes = require('./routes/discussions')
 const cocoonSellRoutes = require('./routes/cocoonSell')
-const MongoDBStore = require("connect-mongo")(session);
-
-
-
+const MongoDBStore = require('connect-mongo')(session)
 
 const dateOb = new Date()
 const date = ('0' + dateOb.getDate()).slice(-2)
@@ -69,8 +62,7 @@ let count1 = 0
 
 console.log(date, month, year, hours, minutes, seconds)
 
-
-mongoose.connect(dbUrl);
+mongoose.connect(dbUrl)
 
 const db = mongoose.connection
 
@@ -104,7 +96,6 @@ const priceSave = async () => {
   price.averagePrice = priceAvg
   await price.save()
 }
-
 
 const client = new Client()
 //   {
@@ -283,15 +274,15 @@ const store = new MongoDBStore({
   url: dbUrl,
   secret: 'thisshouldbeabettersecret',
   touchAfter: 24 * 60 * 60
-});
+})
 
-store.on("error", function (e) {
-  console.log("SESSION STORE ERROR", e)
+store.on('error', function (e) {
+  console.log('SESSION STORE ERROR', e)
 })
 
 const sessionConfig = {
   store,
-  name:'session',
+  name: 'session',
   secret: 'thisshouldbeabettersecret',
   resave: false,
   saveUninitialized: true,
@@ -307,54 +298,52 @@ app.use(session(sessionConfig))
 app.use(flash())
 app.use(helmet())
 
-
 const scriptSrcUrls = [
-  "https://stackpath.bootstrapcdn.com/",
-  "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css",
-  "https://api.tiles.mapbox.com/",
-  "https://api.mapbox.com/",
-  "https://kit.fontawesome.com/",
-  "https://cdnjs.cloudflare.com/",
-  "https://cdn.jsdelivr.net",
-];
+  'https://stackpath.bootstrapcdn.com/',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css',
+  'https://api.tiles.mapbox.com/',
+  'https://api.mapbox.com/',
+  'https://kit.fontawesome.com/',
+  'https://cdnjs.cloudflare.com/',
+  'https://cdn.jsdelivr.net'
+]
 const styleSrcUrls = [
-  "https://kit-free.fontawesome.com/",
-  "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css",
-  "https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjxAwXjeu.woff2",
-  "https://stackpath.bootstrapcdn.com/",
-  "https://api.mapbox.com/",
-  "https://api.tiles.mapbox.com/",
-  "https://fonts.googleapis.com/",
-  "https://use.fontawesome.com/",
-];
+  'https://kit-free.fontawesome.com/',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css',
+  'https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHjxAwXjeu.woff2',
+  'https://stackpath.bootstrapcdn.com/',
+  'https://api.mapbox.com/',
+  'https://api.tiles.mapbox.com/',
+  'https://fonts.googleapis.com/',
+  'https://use.fontawesome.com/'
+]
 const connectSrcUrls = [
-  "https://api.mapbox.com/",
-  "https://a.tiles.mapbox.com/",
-  "https://b.tiles.mapbox.com/",
-  "https://events.mapbox.com/",
-];
-const fontSrcUrls = [];
+  'https://api.mapbox.com/',
+  'https://a.tiles.mapbox.com/',
+  'https://b.tiles.mapbox.com/',
+  'https://events.mapbox.com/'
+]
+const fontSrcUrls = []
 app.use(
   helmet.contentSecurityPolicy({
-      directives: {
-          defaultSrc: [],
-          connectSrc: ["'self'", ...connectSrcUrls],
-          scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-          styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-          workerSrc: ["'self'", "blob:"],
-          objectSrc: [],
-          imgSrc: [
-              "'self'",
-              "blob:",
-              "data:",
-              "https://res.cloudinary.com/douqbebwk/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
-              "https://images.unsplash.com/",
-          ],
-          fontSrc: ["'self'", ...fontSrcUrls],
-      },
+    directives: {
+      defaultSrc: [],
+      connectSrc: ["'self'", ...connectSrcUrls],
+      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+      workerSrc: ["'self'", 'blob:'],
+      objectSrc: [],
+      imgSrc: [
+        "'self'",
+        'blob:',
+        'data:',
+        'https://res.cloudinary.com/douqbebwk/', // SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+        'https://images.unsplash.com/'
+      ],
+      fontSrc: ["'self'", ...fontSrcUrls]
+    }
   })
-);
-
+)
 
 app.use(passport.initialize())
 app.use(passport.session())

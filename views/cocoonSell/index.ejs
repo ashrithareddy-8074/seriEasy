@@ -1,14 +1,24 @@
 <% layout('layouts/boilerplate') %>
 
-<h3>Buyers Available</h3>
+<div class="pageHeadDiv">
+    <h2 class="pageHead">Buyers Available</h1>
+  </div>
 
-<a href="/cocoonSell/new">New</a>
+  <div class="pageContent">
+    <% for(let buyer of buyers) {%> 
+      <div class="card" style="width: 30rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name: <%= buyer.name %></li>
+          <li class="list-group-item">Location: <%= buyer.location %></li>
+          <li class="list-group-item "><a class="linkItem" href="/cocoonSell/<%= buyer._id %>">View </a></li>
+        </ul>
+        <div class="card-footer">
+          <a class="footerLink" href="https://api.whatsapp.com/send?phone=91<%= buyer.contact %>">Contact the owner through whatsapp</a>
+        </div>
+      </div>
+      <div class="emptyDiv">
+      </div>
+      <% } %> 
+  </div>
 
-<% for(let buyer of buyers) {%> 
-    <ul>
-        <li>Name: <%= buyer.name %> </li>
-        <li>Location: <%= buyer.location %> </li>
-        <li>Contact: <%= buyer.contact %> </li>
-        <li><a href="/cocoonSell/<%= buyer._id %>">View</a></li>
-    </ul>
-<% } %> 
+<div class="newDiv"><a href="/cocoonSell/new" class="newLink">Click to add new</a></div>

@@ -175,7 +175,7 @@
     <li class="list-group-item">Location:  <%=  sellers[0].location %></li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link contactLink">Contact</a>
+    <a href="https://api.whatsapp.com/send?phone=91<%= sellers[0].contact  %>" class="card-link contactLink">Contact</a>
   </div>
 </div>
 </div>
@@ -193,7 +193,7 @@
       <li class="list-group-item">Location:  <%=  sellers[1].location %></li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link contactLink">Contact</a>
+      <a href="https://api.whatsapp.com/send?phone=91<%= sellers[1].contact  %>" class="card-link contactLink">Contact</a>
     </div>
   </div>
 </div>
@@ -211,7 +211,7 @@
         <li class="list-group-item">Location:<%=  sellers[2].location %></li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link contactLink">Contact</a>
+        <a href="https://api.whatsapp.com/send?phone=91<%= sellers[2].contact  %>" class="card-link contactLink">Contact</a>
       </div>
     </div>
   </div>
@@ -228,13 +228,13 @@
   <div class="card" style="width: 18rem;">
     <img src="cocoonst.jpeg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Srinivas</h5>
+      <h5 class="card-title"><%= cocoonSellers[0].name %> </h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Location: Hyderabad</li>
+      <li class="list-group-item">Location: <%= cocoonSellers[0].location %></li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link contactLink">Contact</a>
+      <a href="https://api.whatsapp.com/send?phone=91<%= cocoonSellers[0].contact  %>" class="card-link contactLink">Contact</a>
     </div>
   </div>
 </div>
@@ -244,13 +244,13 @@
 <div class="card" style="width: 18rem;">
 <img src="cocoonst.jpeg" class="card-img-top" alt="...">
 <div class="card-body">
-  <h5 class="card-title">Shekar</h5>
+  <h5 class="card-title"><%= cocoonSellers[1].name %></h5>
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">Location: Vishakapatnam</li>
+  <li class="list-group-item">Location: <%= cocoonSellers[1].location %></li>
 </ul>
 <div class="card-body">
-  <a href="#" class="card-link contactLink">Contact</a>
+  <a href="https://api.whatsapp.com/send?phone=91<%= cocoonSellers[1].contact  %>" class="card-link contactLink">Contact</a>
 </div>
 </div>
 </div>
@@ -260,13 +260,13 @@
 <div class="card" style="width: 18rem;">
 <img src="cocoonst.jpeg" class="card-img-top" alt="...">
 <div class="card-body">
-  <h5 class="card-title">Arjun</h5>
+  <h5 class="card-title"><%= cocoonSellers[2].name %></h5>
 </div>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">Location: Warangal</li>
+  <li class="list-group-item">Location: <%= cocoonSellers[2].location %></li>
 </ul>
 <div class="card-body">
-  <a href="#" class="card-link contactLink">Contact</a>
+  <a href="https://api.whatsapp.com/send?phone=91<%= cocoonSellers[2].contact  %>" class="card-link contactLink">Contact</a>
 </div>
 </div>
 </div>
