@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
 .quote {
   height: 35vh;
   background-color: #e9d5ff;
@@ -110,4 +112,48 @@
 }
 .buyersInnerContent {
   margin: 1rem;
+}
+
+.newLink {
+  text-decoration: none;
+  color: black;
+}
+.newDiv {
+  text-align: center;
+}
+.pageHead {
+  font-family: 'Merriweather', serif;
+  text-align: center;
+}
+.pageContent {
+  margin-left: 5rem;
+}
+.linkItem {
+  text-decoration: none;
+  color: rgb(168, 16, 102);
+}
+.footerLink {
+  text-decoration: none;
+  color: #6b21a8;
+}
+.emptyDiv {
+  height: 1rem;
+}
+.showContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.deleteBtn {
+  background-color: red;
+  color: white;
+}
+.newContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newInnerContent {
+  width: 50%;
 }
