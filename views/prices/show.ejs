@@ -1,9 +1,13 @@
 <% layout('layouts/boilerplate') %> 
-<ul>
-    <li>Date: <%= price.date %> </li>
-    <li>Market: <%= price.marketName %> </li>
-    <li>Minimum Price: <%= price.minimumPrice %> </li>
-    <li>Maximum Price: <%= price.maximumPrice %> </li>
-    <li>Average Price: <%= price.averagePrice %> </li>
-    <li><a href="/prices/<%= price._id %>/edit">Edit</a></li>
-</ul>
+
+<div class="showContent">
+    <div class="card" style="width: 30rem;">
+      <ul class="list-group list-group-flush">
+              <li class="list-group-item">Date: <%= price.date %> </li>
+              <li class="list-group-item">Minimum Price: <%= price.minimumPrice %></li>
+              <li class="list-group-item">Maximum Price: <%= price.maximumPrice %></li>
+              <li class="list-group-item">Average Price: <%= price.averagePrice %></li>
+              <li class="list-group-item "><a class="linkItem" href="/prices/<%= price._id %>/edit">Edit</a></li>
+      </ul>
+    </div>
+  </div>
