@@ -29,7 +29,7 @@ const eggRoutes = require('./routes/eggs')
 const userRoutes = require('./routes/users')
 const priceRoutes = require('./routes/prices')
 const cocoonRoutes = require('./routes/cocoons')
-const dbUrl = 'mongodb://localhost:27017/seri-easy'
+// const dbUrl = 'mongodb://localhost:27017/seri-easy'
 //  'mongodb://localhost:27017/yelp-camp';
 // process.env.DB_URL
 
@@ -62,6 +62,7 @@ let count1 = 0
 
 console.log(date, month, year, hours, minutes, seconds)
 
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/seri-easy';
 mongoose.connect(dbUrl)
 
 const db = mongoose.connection
@@ -270,9 +271,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(mongoSanitize())
 
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+
 const store = new MongoDBStore({
   url: dbUrl,
-  secret: 'thisshouldbeabettersecret',
+  secret,
   touchAfter: 24 * 60 * 60
 })
 
@@ -283,7 +286,7 @@ store.on('error', function (e) {
 const sessionConfig = {
   store,
   name: 'session',
-  secret: 'thisshouldbeabettersecret',
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
