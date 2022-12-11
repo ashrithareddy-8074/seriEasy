@@ -379,6 +379,7 @@ app.use('/prices', priceRoutes)
 app.use('/cocoons', cocoonRoutes)
 app.use('/cocoonSell', cocoonSellRoutes)
 
-app.listen(8000, () => {
-  console.log('listening on port 8000')
+const port=process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`listening on port ${port}`)
 })
