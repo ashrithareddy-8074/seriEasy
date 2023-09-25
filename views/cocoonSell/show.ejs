@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') %>
+
+<ul>
+    <li>Name: <%= buyer.name %> </li>
+    <li>Location: <%= buyer.location %> </li>
+    <li>Contact: <%= buyer.contact %> </li>
+    <li><a href="https://api.whatsapp.com/send?phone=91<%= buyer.contact  %>">Contact the buyer through whatsapp</a></li>
+    <li><a href="/cocoonSell/<%= buyer._id %>/edit">Edit</a></li>
+    <form action="/cocoonSell/<%= buyer._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+</ul>

@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate') %>
+
+<h3>Edit form</h3>
+
+<div>
+    <form action="/cocoonSell/<%= buyer._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= buyer.name %>">
+        <label for="location" >Location:</label>
+        <input type="location" id="location" value="<%= buyer.location %>">
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" value="<%= buyer.contact %>">
+        <button>Submit</button>
+    </form>
+</div>
